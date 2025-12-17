@@ -4,9 +4,10 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Portfolio Details - iPortfolio Bootstrap Template</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+
+  <title>Project Details | Kamil Raza</title>
+  <meta name="description" content="Project details by Kamil Raza – Full-Stack Web Developer & AI Automation Expert">
+  <meta name="keywords" content="Kamil Raza, Full Stack Web Developer, AI Automation Expert, PHP, JavaScript, n8n">
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
@@ -15,9 +16,10 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Poppins:wght@300;400;500;600;700;900&family=Raleway:wght@300;400;500;600;700;900&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Poppins:wght@300;400;500;600;700;900&family=Raleway:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  
+  <!-- Animate.css for animations -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -28,234 +30,926 @@
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
+  
+  <!-- Custom CSS for Beautiful Gallery -->
+  <style>
+    :root {
+      --primary-color: #3498db;
+      --secondary-color: #2c3e50;
+      --accent-color: #00d4ff;
+      --info-bg: #0a192f;
+      --light-bg: #f8f9fa;
+      --dark-bg: #0a192f;
+      --gradient: linear-gradient(135deg, #00d4ff 0%, #3498db 100%);
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+    
+    /* Gallery Section */
+    .creative-gallery {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      background: #ffffff;
+      box-shadow: var(--shadow);
+      padding: 20px;
+      margin-bottom: 30px;
+    }
+    
+    .main-display {
+      position: relative;
+      width: 100%;
+      height: 500px;
+      overflow: hidden;
+      border-radius: 8px;
+      background: #f8f9fa;
+      margin-bottom: 20px;
+      border: 1px solid #eaeaea;
+    }
+    
+    .main-display img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: var(--transition);
+    }
+    
+    .main-display:hover img {
+      transform: scale(1.02);
+    }
+    
+    .thumbnail-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+      gap: 12px;
+      padding: 15px;
+      background: #ffffff;
+      border-radius: 8px;
+      border: 1px solid #eaeaea;
+    }
+    
+    .thumbnail-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: var(--transition);
+      height: 90px;
+      border: 2px solid transparent;
+      background: #ffffff;
+    }
+    
+    .thumbnail-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+    
+    .thumbnail-item:hover {
+      transform: translateY(-2px);
+      border-color: var(--primary-color);
+    }
+    
+    .thumbnail-item.active {
+      border-color: var(--primary-color);
+      box-shadow: 0 5px 15px rgba(52, 152, 219, 0.2);
+    }
+    
+    .image-counter {
+      position: absolute;
+      bottom: 15px;
+      left: 15px;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 6px 15px;
+      border-radius: 20px;
+      font-size: 14px;
+      z-index: 10;
+    }
+    
+    .gallery-controls {
+      position: absolute;
+      bottom: 15px;
+      right: 15px;
+      display: flex;
+      gap: 10px;
+      z-index: 10;
+    }
+    
+    .control-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.9);
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      color: #333;
+      font-size: 16px;
+    }
+    
+    .control-btn:hover {
+      background: var(--primary-color);
+      color: white;
+      transform: translateY(-2px);
+    }
+    
+    /* Project Information Section - Simple Design */
+    .portfolio-info {
+      background: #ffffff;
+      border-radius: 8px;
+      padding: 25px;
+      box-shadow: var(--shadow);
+      border: 1px solid #eaeaea;
+      margin-bottom: 20px;
+    }
+    
+    .portfolio-info h3 {
+      color: #333;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #f0f0f0;
+      font-weight: 600;
+      font-size: 1.3rem;
+    }
+    
+    .portfolio-info ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .portfolio-info li {
+      padding: 12px 0;
+      border-bottom: 1px solid #f5f5f5;
+      color: #555;
+      font-size: 15px;
+      display: flex;
+      align-items: flex-start;
+    }
+    
+    .portfolio-info li:last-child {
+      border-bottom: none;
+    }
+    
+    .portfolio-info li strong {
+      color: #333;
+      min-width: 100px;
+      display: inline-block;
+      font-weight: 500;
+    }
+    
+    .portfolio-info li i {
+      margin-right: 10px;
+      color: var(--primary-color);
+      width: 16px;
+      text-align: center;
+      margin-top: 2px;
+    }
+    
+    /* Live Website Button */
+    .live-website-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--primary-color);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+      border: 2px solid var(--primary-color);
+      margin-top: 10px;
+    }
+    
+    .live-website-btn:hover {
+      background: white;
+      color: var(--primary-color);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(52, 152, 219, 0.2);
+    }
+    
+    .live-website-btn i {
+      font-size: 16px;
+    }
+    
+    .portfolio-description {
+      background: #ffffff;
+      border-radius: 8px;
+      padding: 25px;
+      box-shadow: var(--shadow);
+      border: 1px solid #eaeaea;
+      margin-bottom: 20px;
+    }
+    
+    .portfolio-description h2 {
+      color: #333;
+      font-weight: 600;
+      margin-bottom: 15px;
+      font-size: 1.6rem;
+    }
+    
+    .portfolio-description p {
+      color: #666;
+      line-height: 1.6;
+      font-size: 15px;
+      margin-bottom: 20px;
+    }
+    
+    .project-features h5 {
+      color: #333;
+      margin-bottom: 15px;
+      font-weight: 500;
+      font-size: 1.1rem;
+    }
+    
+    .features-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .features-list li {
+      color: #555;
+      padding: 8px 0;
+      padding-left: 20px;
+      position: relative;
+      font-size: 14px;
+    }
+    
+    .features-list li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--primary-color);
+      font-size: 18px;
+    }
+    
+    .portfolio-stats {
+      background: #f8f9fa;
+      border-radius: 8px;
+      padding: 25px;
+      border: 1px solid #eaeaea;
+    }
+    
+    .portfolio-stats h4 {
+      color: #333;
+      margin-bottom: 20px;
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 15px;
+    }
+    
+    .stat-item {
+      text-align: center;
+      padding: 15px;
+      background: #ffffff;
+      border-radius: 8px;
+      border: 1px solid #eaeaea;
+    }
+    
+    .stat-item i {
+      font-size: 20px;
+      color: var(--primary-color);
+      margin-bottom: 8px;
+      display: block;
+    }
+    
+    .stat-item span {
+      font-size: 13px;
+      color: #666;
+      font-weight: 500;
+    }
+    
+    /* Tech Tags */
+    .tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 15px;
+    }
+    
+    .tech-tag {
+      background: #f0f7ff;
+      color: var(--primary-color);
+      padding: 5px 12px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 500;
+      border: 1px solid #d1e7ff;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .main-display {
+        height: 400px;
+      }
+      
+      .thumbnail-grid {
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+      }
+      
+      .thumbnail-item {
+        height: 80px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .main-display {
+        height: 350px;
+      }
+      
+      .gallery-controls {
+        bottom: 10px;
+        right: 10px;
+      }
+      
+      .control-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+      }
+      
+      .image-counter {
+        bottom: 10px;
+        left: 10px;
+        padding: 5px 12px;
+        font-size: 12px;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .main-display {
+        height: 300px;
+      }
+      
+      .thumbnail-grid {
+        grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+        gap: 8px;
+      }
+      
+      .thumbnail-item {
+        height: 70px;
+      }
+      
+      .creative-gallery {
+        padding: 15px;
+      }
+      
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+      
+      .portfolio-info,
+      .portfolio-description,
+      .portfolio-stats {
+        padding: 20px;
+      }
+      
+      .live-website-btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
 </head>
 
 <body class="portfolio-details-page">
 
+  <!-- ======= Header ======= -->
   <header id="header" class="header dark-background d-flex flex-column">
     <i class="header-toggle d-xl-none bi bi-list"></i>
 
     <div class="profile-img">
-      <img src="assets/img/my-profile-img.jpg" alt="" class="img-fluid rounded-circle">
+      <img src="myProfile2.jpeg" alt="Kamil Raza" class="img-fluid rounded-circle">
     </div>
 
     <a href="index.html" class="logo d-flex align-items-center justify-content-center">
-      <h1 class="sitename">Alex Smith</h1>
+      <h1 class="sitename">Kamil Raza</h1>
     </a>
 
     <div class="social-links text-center">
-      <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
-      <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-      <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-      <a href="#" class="google-plus"><i class="bi bi-skype"></i></a>
-      <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+      <a href="#" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+      <a href="#" title="GitHub"><i class="bi bi-github"></i></a>
     </div>
 
     <nav id="navmenu" class="navmenu">
       <ul>
-        <li><a href="#hero"><i class="bi bi-house navicon"></i>Home</a></li>
-        <li><a href="#about"><i class="bi bi-person navicon"></i> About</a></li>
-        <li><a href="#resume"><i class="bi bi-file-earmark-text navicon"></i> Resume</a></li>
-        <li><a href="#portfolio"><i class="bi bi-images navicon"></i> Portfolio</a></li>
-        <li><a href="#services"><i class="bi bi-hdd-stack navicon"></i> Services</a></li>
-        <li class="dropdown"><a href="#"><i class="bi bi-menu-button navicon"></i> <span>Dropdown</span> <i
-              class="bi bi-chevron-down toggle-dropdown"></i></a>
-          <ul>
-            <li><a href="#">Dropdown 1</a></li>
-            <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i
-                  class="bi bi-chevron-down toggle-dropdown"></i></a>
-              <ul>
-                <li><a href="#">Deep Dropdown 1</a></li>
-                <li><a href="#">Deep Dropdown 2</a></li>
-                <li><a href="#">Deep Dropdown 3</a></li>
-                <li><a href="#">Deep Dropdown 4</a></li>
-                <li><a href="#">Deep Dropdown 5</a></li>
-              </ul>
-            </li>
-            <li><a href="#">Dropdown 2</a></li>
-            <li><a href="#">Dropdown 3</a></li>
-            <li><a href="#">Dropdown 4</a></li>
-          </ul>
-        </li>
-        <li><a href="#contact"><i class="bi bi-envelope navicon"></i> Contact</a></li>
+        <li><a href="index.html#hero"><i class="bi bi-house navicon"></i> Home</a></li>
+        <li><a href="index.html#about"><i class="bi bi-person navicon"></i> About</a></li>
+        <li><a href="index.html#resume"><i class="bi bi-file-earmark-text navicon"></i> Resume</a></li>
+        <li><a href="index.html#portfolio" class="active"><i class="bi bi-images navicon"></i> Portfolio</a></li>
+        <li><a href="index.html#services"><i class="bi bi-hdd-stack navicon"></i> Services</a></li>
+        <li><a href="index.html#contact"><i class="bi bi-envelope navicon"></i> Contact</a></li>
       </ul>
     </nav>
-
   </header>
+  <!-- End Header -->
 
+  <!-- ======= Main ======= -->
   <main class="main">
 
     <!-- Page Title -->
     <div class="page-title dark-background">
       <div class="container d-lg-flex justify-content-between align-items-center">
-        <h1 class="mb-2 mb-lg-0">Portfolio Details</h1>
+        <h1 class="mb-2 mb-lg-0">Project Details</h1>
         <nav class="breadcrumbs">
           <ol>
             <li><a href="index.html">Home</a></li>
-            <li class="current">Portfolio Details</li>
+            <li class="current">Project Details</li>
           </ol>
         </nav>
       </div>
-    </div><!-- End Page Title -->
+    </div>
 
-    <!-- Portfolio Details Section -->
+    <!-- ======= Portfolio Details Section ======= -->
     <section id="portfolio-details" class="portfolio-details section">
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
+      <div class="container" data-aos="fade-up">
 
         <div class="row gy-4">
 
+          <!-- Creative Gallery -->
           <div class="col-lg-8">
-            <div class="portfolio-details-slider swiper init-swiper">
-              <div class="swiper-wrapper align-items-center" id="project-images">
-                <!-- Images will load here -->
+            <div class="creative-gallery">
+              <div class="main-display">
+                <img id="main-image" src="" alt="Main Project Image">
+                <div class="image-counter" id="image-counter">1 / 9</div>
+                <div class="gallery-controls">
+                  <button class="control-btn" id="prev-btn" title="Previous Image">
+                    <i class="bi bi-chevron-left"></i>
+                  </button>
+                  <button class="control-btn" id="zoom-btn" title="Zoom/View Fullscreen">
+                    <i class="bi bi-zoom-in"></i>
+                  </button>
+                  <button class="control-btn" id="next-btn" title="Next Image">
+                    <i class="bi bi-chevron-right"></i>
+                  </button>
+                </div>
               </div>
-              <div class="swiper-pagination"></div>
+              <div class="thumbnail-grid" id="thumbnail-grid">
+                <!-- Thumbnails will be injected here -->
+              </div>
+            </div>
+            
+            <!-- Lightbox Gallery (Hidden) -->
+            <div class="lightbox-gallery" id="lightbox-gallery">
+              <!-- Lightbox images will be added here -->
             </div>
           </div>
 
+          <!-- Project Information (Simple Design) -->
           <div class="col-lg-4">
-            <div class="portfolio-info" data-aos="fade-up" data-aos-delay="200">
-              <h3>Project information</h3>
+            <div class="portfolio-info">
+              <h3>Project Information</h3>
               <ul id="project-info">
-                <!-- Project info loads here -->
+                <!-- Dynamic content -->
               </ul>
+              <!-- Live Website Button Container -->
+              <div id="live-website-btn-container"></div>
+              <div class="tech-tags" id="tech-tags">
+                <!-- Technology tags will be injected here -->
+              </div>
             </div>
-            <div class="portfolio-description" data-aos="fade-up" data-aos-delay="300">
+
+            <div class="portfolio-description">
               <h2 id="project-title">Loading...</h2>
               <p id="project-description">Please wait while project details load.</p>
+              <div class="project-features mt-4">
+                <h5>Key Features</h5>
+                <ul class="features-list" id="features-list">
+                  <!-- Features will be injected here -->
+                </ul>
+              </div>
+            </div>
+            
+            <!-- Project Stats -->
+            <div class="portfolio-stats">
+              <h4>Project Stats</h4>
+              <div class="stats-grid">
+                <div class="stat-item">
+                  <i class="bi bi-images"></i>
+                  <span id="image-count">9 Images</span>
+                </div>
+                <div class="stat-item">
+                  <i class="bi bi-calendar-check"></i>
+                  <span id="project-date">April 2024</span>
+                </div>
+                <div class="stat-item">
+                  <i class="bi bi-clock"></i>
+                  <span id="project-duration">2 Months</span>
+                </div>
+                <div class="stat-item">
+                  <i class="bi bi-code-slash"></i>
+                  <span id="project-lines">5000+ Lines</span>
+                </div>
+              </div>
             </div>
           </div>
 
         </div>
 
       </div>
-
-    </section><!-- /Portfolio Details Section -->
+    </section>
+    <!-- End Portfolio Details Section -->
 
   </main>
 
+  <!-- ======= Footer ======= -->
   <footer id="footer" class="footer position-relative light-background">
-
-    <div class="container">
-      <div class="copyright text-center ">
-        <p>© <span>Copyright</span> <strong class="px-1 sitename">iPortfolio</strong> <span>All Rights Reserved</span>
-        </p>
-      </div>
-      <div class="credits">
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Distributed by <a
-          href="https://themewagon.com">ThemeWagon</a>
-      </div>
+    <div class="container text-center">
+      <p>
+        © <strong>Kamil Raza</strong> — All Rights Reserved
+      </p>
+      <p>
+        Full-Stack Web Developer & AI Automation Expert
+      </p>
     </div>
-
   </footer>
 
   <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
-      class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Preloader -->
-  <div id="preloader"></div>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+    <i class="bi bi-arrow-up-short"></i>
+  </a>
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/typed.js/typed.umd.js"></script>
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
 
-  <!-- Main JS File -->
+  <!-- Main JS -->
   <script src="assets/js/main.js"></script>
 
-  <!-- Custom Dynamic Project Loader -->
+  <!-- ======= Dynamic Project Loader ======= -->
   <script>
-    // Example project data
-    const projects = {
-      app1: {
-        title: "App 1",
-        description: "This is the detail description of App 1.",
-        category: "Mobile App",
-        client: "XYZ Company",
-        date: "01 March, 2024",
-        url: "https://example.com/app1",
-        images: ["assets/img/portfolio/app-1.jpg"]
-      },
-    product1: {
-  title: "Product 1",
-  description: "This is the detail description of Product 1.",
-  category: "Product Design",
-  client: "ABC Ltd.",
-  date: "15 April, 2024",
-  url: "https://example.com/product1",
- images: [
-  "/myPortfolio/PRMS_PROJECT/product1-1.jpeg",
-  "/myPortfolio/PRMS_PROJECT/product1-2.jpeg",
-  "/myPortfolio/PRMS_PROJECT/product1-3.jpeg",
-  "/myPortfolio/PRMS_PROJECT/product1-4.jpeg",
-  "/myPortfolio/PRMS_PROJECT/product1-5.jpeg",
-  "/myPortfolio/PRMS_PROJECT/product1-6.jpeg",
-  "/myPortfolio/PRMS_PROJECT/product1-7.jpeg",
-  "/myPortfolio/PRMS_PROJECT/product1-8.jpeg",
-  "/myPortfolio/PRMS_PROJECT/product1-9.jpeg"
-]
+const projects = {
 
-}
-,
-      branding1: {
-        title: "Branding 1",
-        description: "This is the detail description of Branding 1.",
-        category: "Branding",
-        client: "Design Studio",
-        date: "10 May, 2024",
-        url: "https://example.com/branding1",
-        images: ["assets/img/portfolio/branding-1.jpg"]
-      },
-      books1: {
-        title: "Books 1",
-        description: "This is the detail description of Book 1.",
-        category: "Books",
-        client: "Publishing House",
-        date: "20 June, 2024",
-        url: "https://example.com/books1",
-        images: ["assets/img/portfolio/books-1.jpg"]
-      }
-      // Add more projects as needed
-    };
+  product1: {
+    title: "Patient Record Management System",
+    description: "A complete web-based PRMS developed using PHP, MySQL, and JavaScript with secure data handling and role-based access. This system streamlines patient data management, appointment scheduling, and medical record keeping for healthcare providers.",
+    category: "Web Application",
+    client: "Healthcare Organization",
+    date: "April 2024",
+    duration: "2 Months",
+    linesOfCode: "5000+ Lines",
+    liveUrl: "https://example.com",
+    technologies: ["PHP", "MySQL", "JavaScript", "Bootstrap", "AJAX", "jQuery"],
+    features: [
+      "Secure patient data management",
+      "Role-based access control",
+      "Appointment scheduling system",
+      "Medical record digitalization",
+      "Real-time notifications",
+      "Report generation"
+    ],
+    images: [
+      "/myPortfolio/PRMS_PROJECT/product1-1.jpeg",
+      "/myPortfolio/PRMS_PROJECT/product1-2.jpeg",
+      "/myPortfolio/PRMS_PROJECT/product1-3.jpeg",
+      "/myPortfolio/PRMS_PROJECT/product1-4.jpeg",
+      "/myPortfolio/PRMS_PROJECT/product1-5.jpeg",
+      "/myPortfolio/PRMS_PROJECT/product1-6.jpeg",
+      "/myPortfolio/PRMS_PROJECT/product1-7.jpeg",
+      "/myPortfolio/PRMS_PROJECT/product1-8.jpeg",
+      "/myPortfolio/PRMS_PROJECT/product1-9.jpeg"
+    ]
+  },
 
-    // Get ID from URL
+  product2: {
+    title: "Carpenter Portfolio Website",
+    description: "A modern and elegant portfolio website for a carpenter and furniture designer, highlighting craftsmanship, woodworking skills, completed projects, and service offerings with a responsive and visually appealing design.",
+    category: "Portfolio Website",
+    client: "Carpenter / Furniture Designer",
+    date: "February 2024",
+    duration: "1 Month",
+    linesOfCode: "3000+ Lines",
+    liveUrl: "https://carpenter-design-example.com",
+    technologies: ["HTML5", "CSS3", "JavaScript", "Bootstrap", "PHP", "jQuery"],
+    features: [
+      "Fully responsive design",
+      "Project gallery with filtering",
+      "Services and pricing section",
+      "Client testimonials",
+      "SEO-optimized pages",
+      "Contact form with email integration",
+      "Smooth animations and transitions"
+    ],
+    images: [
+      "/myPortfolio/CarpenterWebsite/Capture.JPG",
+      "/myPortfolio/CarpenterWebsite/Capture1.JPG",
+      "/myPortfolio/CarpenterWebsite/Capture2.JPG",
+      "/myPortfolio/CarpenterWebsite/Capture3.JPG",
+      "/myPortfolio/CarpenterWebsite/Capture4.JPG",
+      "/myPortfolio/CarpenterWebsite/Capture5.JPG"
+    ]
+  },
+
+  product3: {
+    title: "WGTecSol Corporate Website",
+    description: "A professional corporate website for WGTecSol – Word of Great Technology Solution – a digital product agency delivering scalable, innovative, and result-driven digital solutions. The website reflects the brand’s vision, services, leadership, and portfolio.",
+    category: "Corporate Website",
+    client: "WGTecSol Digital Agency",
+    date: "March 2024",
+    duration: "2 Months",
+    linesOfCode: "4000+ Lines",
+    liveUrl: "http://www.wgtecsol.com/",
+    technologies: ["HTML5", "CSS3", "JavaScript", "Bootstrap", "PHP", "jQuery", "WordPress"],
+    features: [
+      "Modern corporate UI/UX",
+      "Service offerings and solutions pages",
+      "Leadership and team section",
+      "Portfolio and case studies",
+      "Blog and updates section",
+      "SEO-friendly architecture",
+      "Mobile-first responsive design"
+    ],
+    images: [
+      "/myPortfolio/wgtecSol/Capture.JPG",
+      "/myPortfolio/wgtecSol/Capture2.JPG",
+      "/myPortfolio/wgtecSol/Capture3.JPG",
+      "/myPortfolio/wgtecSol/Capture4.JPG",
+      "/myPortfolio/wgtecSol/Capture5.JPG"
+    ]
+  },
+
+  product4: {
+    title: "DormData Performance & Load Testing",
+    description: "Comprehensive web performance and load testing for DormData, a student coding league platform. The testing ensured scalability, reliability, and optimal performance under heavy concurrent user traffic.",
+    category: "Web Testing & Performance",
+    client: "DormData",
+    date: "January 2024",
+    duration: "3 Weeks",
+    linesOfCode: "N/A",
+    liveUrl: "https://www.dormdata.com/",
+    technologies: ["JMeter", "k6", "Locust", "Postman", "New Relic", "Chrome DevTools"],
+    features: [
+      "Load testing with thousands of concurrent users",
+      "Performance bottleneck identification",
+      "API response time testing",
+      "Server resource monitoring",
+      "Database query performance analysis",
+      "Failure point detection",
+      "Detailed performance reporting"
+    ],
+    images: [
+      "/myPortfolio/dormdata/Capture.JPG",
+      "/myPortfolio/dormdata/Capture1.JPG",
+      "/myPortfolio/dormdata/Capture2.JPG",
+      "/myPortfolio/dormdata/Capture3.JPG",
+      "/myPortfolio/dormdata/Capture4.JPG"
+    ]
+  },
+
+  product5: {
+    title: "AI Presentation Skill Analyzer",
+    description: "An AI-powered web platform designed to help users improve presentation skills by analyzing speech, tone, pace, facial expressions, and engagement levels in real time. The system acts as a digital coach, providing automated and personalized feedback.",
+    category: "AI Web Application",
+    client: "Academic & Professional Use",
+    date: "2024",
+    duration: "Final Year Project",
+    linesOfCode: "6000+ Lines",
+    liveUrl: "#",
+    technologies: [
+      "Python",
+      "OpenAI Whisper",
+      "NLP (BERT / GPT)",
+      "MediaPipe",
+      "DeepFace",
+      "JavaScript",
+      "HTML5",
+      "CSS3"
+    ],
+    features: [
+      "Real-time speech recognition and analysis",
+      "Tone, pace, and clarity evaluation",
+      "Facial emotion detection",
+      "Confidence and engagement scoring",
+      "AI-generated feedback and suggestions",
+      "Interactive audience question simulation",
+      "Personalized performance reports"
+    ],
+    images: [
+      "/myPortfolio/AIPRESENTATIONSKILLNANALYZER/Capture.JPG",
+      "/myPortfolio/AIPRESENTATIONSKILLNANALYZER/Capture1.JPG",
+      "/myPortfolio/AIPRESENTATIONSKILLNANALYZER/Capture2.JPG",
+      "/myPortfolio/AIPRESENTATIONSKILLNANALYZER/Capture3.JPG",
+      "/myPortfolio/AIPRESENTATIONSKILLNANALYZER/Capture4.JPG",
+      "/myPortfolio/AIPRESENTATIONSKILLNANALYZER/Capture5.JPG",
+      "/myPortfolio/AIPRESENTATIONSKILLNANALYZER/Capture6.JPG"
+    ]
+  }
+
+};
+
+
     const params = new URLSearchParams(window.location.search);
     const projectId = params.get("id");
-    console.log("Product ID:", projectId);
     const project = projects[projectId];
 
     if (project) {
-      // Fill project info
-      document.getElementById("project-info").innerHTML = `
-        <li><strong>Category</strong>: ${project.category}</li>
-        <li><strong>Client</strong>: ${project.client}</li>
-        <li><strong>Project date</strong>: ${project.date}</li>
-        <li><strong>Project URL</strong>: <a href="${project.url}" target="_blank">${project.url}</a></li>
-      `;
+      // Set project information
       document.getElementById("project-title").innerText = project.title;
       document.getElementById("project-description").innerText = project.description;
+      
+      document.getElementById("project-info").innerHTML = `
+        <li><i class="bi bi-grid-3x3-gap"></i><strong>Category:</strong> ${project.category}</li>
+        <li><i class="bi bi-building"></i><strong>Client:</strong> ${project.client}</li>
+        <li><i class="bi bi-calendar"></i><strong>Date:</strong> ${project.date}</li>
+        <li><i class="bi bi-clock-history"></i><strong>Duration:</strong> ${project.duration}</li>
+        <li><i class="bi bi-code-slash"></i><strong>Code Lines:</strong> ${project.linesOfCode}</li>
+      `;
+      
+      // Add Live Website Button if URL exists
+      const liveBtnContainer = document.getElementById("live-website-btn-container");
+      if (project.liveUrl) {
+        liveBtnContainer.innerHTML = `
+          <a href="${project.liveUrl}" target="_blank" class="live-website-btn">
+            <i class="bi bi-globe"></i> Visit Live Website
+          </a>
+        `;
+      }
+      
+      // Set stats
+      document.getElementById("image-count").innerText = `${project.images.length} Images`;
+      document.getElementById("project-date").innerText = project.date;
+      document.getElementById("project-duration").innerText = project.duration;
+      document.getElementById("project-lines").innerText = project.linesOfCode;
 
-      // Load images
-      document.getElementById("project-images").innerHTML = project.images.map(img => `
-        <div class="swiper-slide">
-          <img src="${img}" alt="">
-        </div>
-      `).join("");
+      // Create technology tags
+      const techTags = document.getElementById("tech-tags");
+      if (project.technologies && project.technologies.length > 0) {
+        techTags.innerHTML = project.technologies.map(tech => 
+          `<span class="tech-tag">${tech}</span>`
+        ).join('');
+      }
+
+      // Create features list
+      const featuresList = document.getElementById("features-list");
+      if (project.features && project.features.length > 0) {
+        featuresList.innerHTML = project.features.map(feature => 
+          `<li>${feature}</li>`
+        ).join('');
+      }
+
+      // Initialize main image
+      const mainImage = document.getElementById("main-image");
+      mainImage.src = project.images[0];
+      mainImage.alt = project.title;
+      
+      // Create thumbnails
+      const thumbnailGrid = document.getElementById("thumbnail-grid");
+      const lightboxGallery = document.getElementById("lightbox-gallery");
+      
+      project.images.forEach((img, index) => {
+        // Create thumbnail
+        const thumbnail = document.createElement("div");
+        thumbnail.className = `thumbnail-item ${index === 0 ? 'active' : ''}`;
+        thumbnail.setAttribute("data-index", index);
+        
+        const thumbImg = document.createElement("img");
+        thumbImg.src = img;
+        thumbImg.alt = `${project.title} - Image ${index + 1}`;
+        thumbImg.loading = "lazy";
+        
+        thumbnail.appendChild(thumbImg);
+        thumbnail.addEventListener("click", () => switchImage(index));
+        thumbnailGrid.appendChild(thumbnail);
+        
+        // Create lightbox item
+        const lightboxLink = document.createElement("a");
+        lightboxLink.href = img;
+        lightboxLink.className = "glightbox";
+        lightboxLink.setAttribute("data-gallery", "gallery1");
+        lightboxLink.setAttribute("data-title", `${project.title} - Image ${index + 1}`);
+        lightboxLink.setAttribute("data-description", `View ${index + 1} of ${project.images.length}`);
+        
+        const lightboxImg = document.createElement("img");
+        lightboxImg.src = img;
+        lightboxImg.style.display = "none";
+        lightboxImg.alt = `${project.title} - Image ${index + 1}`;
+        
+        lightboxLink.appendChild(lightboxImg);
+        lightboxGallery.appendChild(lightboxLink);
+      });
+
+      // Initialize GLightbox
+      const lightbox = GLightbox({
+        selector: '.glightbox',
+        touchNavigation: true,
+        loop: true,
+        openEffect: 'zoom',
+        closeEffect: 'fade',
+        slideEffect: 'slide',
+        moreLength: 0,
+        zoomable: true,
+        draggable: true,
+        autoplayVideos: false
+      });
+
+      let currentIndex = 0;
+      
+      // Switch image function
+      function switchImage(index) {
+        currentIndex = index;
+        
+        // Update main image with fade effect
+        mainImage.style.opacity = 0;
+        setTimeout(() => {
+          mainImage.src = project.images[index];
+          mainImage.style.opacity = 1;
+        }, 200);
+        
+        // Update counter
+        document.getElementById("image-counter").innerText = `${index + 1} / ${project.images.length}`;
+        
+        // Update active thumbnail
+        document.querySelectorAll('.thumbnail-item').forEach((item, i) => {
+          if (i === index) {
+            item.classList.add('active');
+          } else {
+            item.classList.remove('active');
+          }
+        });
+      }
+      
+      // Next button functionality
+      document.getElementById("next-btn").addEventListener("click", () => {
+        const nextIndex = (currentIndex + 1) % project.images.length;
+        switchImage(nextIndex);
+      });
+      
+      // Previous button functionality
+      document.getElementById("prev-btn").addEventListener("click", () => {
+        const prevIndex = (currentIndex - 1 + project.images.length) % project.images.length;
+        switchImage(prevIndex);
+      });
+      
+      // Zoom button functionality
+      document.getElementById("zoom-btn").addEventListener("click", () => {
+        lightbox.openAt(currentIndex);
+      });
+      
+      // Keyboard navigation
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+          e.preventDefault();
+          const nextIndex = (currentIndex + 1) % project.images.length;
+          switchImage(nextIndex);
+        } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+          e.preventDefault();
+          const prevIndex = (currentIndex - 1 + project.images.length) % project.images.length;
+          switchImage(prevIndex);
+        } else if (e.key === ' ' || e.key === 'Enter') {
+          e.preventDefault();
+          lightbox.openAt(currentIndex);
+        }
+      });
+      
+      // Auto-cycle images with pause on hover
+      let autoCycleInterval;
+      
+      function startAutoCycle() {
+        autoCycleInterval = setInterval(() => {
+          const nextIndex = (currentIndex + 1) % project.images.length;
+          switchImage(nextIndex);
+        }, 4000);
+      }
+      
+      function stopAutoCycle() {
+        clearInterval(autoCycleInterval);
+      }
+      
+      // Start auto-cycle on page load
+      setTimeout(() => {
+        startAutoCycle();
+      }, 1000);
+      
+      // Pause on hover
+      const galleryContainer = document.querySelector('.creative-gallery');
+      galleryContainer.addEventListener('mouseenter', stopAutoCycle);
+      galleryContainer.addEventListener('mouseleave', startAutoCycle);
+      
+      // Initialize with first image active
+      switchImage(0);
+
     } else {
-      document.getElementById("project-title").innerText = "Project not found";
-      document.getElementById("project-description").innerText = "No details available for this project.";
+      document.getElementById("project-title").innerText = "Project Not Found";
+      document.getElementById("project-description").innerText =
+        "Invalid or missing project ID.";
     }
   </script>
 
 </body>
-
 </html>
