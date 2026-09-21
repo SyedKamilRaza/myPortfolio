@@ -349,6 +349,52 @@
       font-weight: 500;
       border: 1px solid #d1e7ff;
     }
+
+    /* Project Video Section */
+    .portfolio-video {
+      background: #ffffff;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+      border: 1px solid #eaeaea;
+      margin-bottom: 30px;
+    }
+
+    .portfolio-video h3 {
+      color: #333;
+      margin-bottom: 15px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #f0f0f0;
+      font-weight: 600;
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .portfolio-video h3 i {
+      color: var(--primary-color);
+    }
+
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      height: 0;
+      overflow: hidden;
+      border-radius: 8px;
+      background: #000;
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      border-radius: 8px;
+    }
     
     /* Responsive Design */
     @media (max-width: 992px) {
@@ -414,7 +460,8 @@
       
       .portfolio-info,
       .portfolio-description,
-      .portfolio-stats {
+      .portfolio-stats,
+      .portfolio-video {
         padding: 20px;
       }
       
@@ -500,6 +547,14 @@
               </div>
               <div class="thumbnail-grid" id="thumbnail-grid">
                 <!-- Thumbnails will be injected here -->
+              </div>
+            </div>
+
+            <!-- Project Video (only shown if a videoUrl is set for the project) -->
+            <div class="portfolio-video" id="portfolio-video" style="display: none;">
+              <h3><i class="bi bi-play-circle"></i> Project Video</h3>
+              <div class="video-wrapper" id="video-wrapper">
+                <!-- YouTube iframe injected here -->
               </div>
             </div>
             
@@ -605,6 +660,7 @@ const projects = {
     duration: "2 Months",
     linesOfCode: "5000+ Lines",
     liveUrl: "https://example.com",
+    videoUrl: "", // <-- paste your YouTube link here, e.g. "https://www.youtube.com/watch?v=XXXXXXXXXXX"
     technologies: ["PHP", "MySQL", "JavaScript", "Bootstrap", "AJAX", "jQuery"],
     features: [
       "Secure patient data management",
@@ -636,6 +692,7 @@ const projects = {
     duration: "1 Month",
     linesOfCode: "3000+ Lines",
     liveUrl: "https://carpenter-design-example.com",
+    videoUrl: "", // <-- paste your YouTube link here
     technologies: ["HTML5", "CSS3", "JavaScript", "Bootstrap", "PHP", "jQuery"],
     features: [
       "Fully responsive design",
@@ -665,6 +722,7 @@ const projects = {
     duration: "2 Months",
     linesOfCode: "4000+ Lines",
     liveUrl: "http://www.wgtecsol.com/",
+    videoUrl: "", // <-- paste your YouTube link here
     technologies: ["HTML5", "CSS3", "JavaScript", "Bootstrap", "PHP", "jQuery", "WordPress"],
     features: [
       "Modern corporate UI/UX",
@@ -693,6 +751,7 @@ const projects = {
     duration: "3 Weeks",
     linesOfCode: "N/A",
     liveUrl: "https://www.dormdata.com/",
+    videoUrl: "", // <-- paste your YouTube link here
     technologies: ["JMeter", "k6", "Locust", "Postman", "New Relic", "Chrome DevTools"],
     features: [
       "Load testing with thousands of users",
@@ -721,6 +780,7 @@ const projects = {
     duration: "Final Year Project",
     linesOfCode: "6000+ Lines",
     liveUrl: "#",
+    videoUrl: "https://youtu.be/3JMwW5GThVU?si=xP5Y4gRT7xvXmUy3", // <-- paste your YouTube link here (e.g. your AI calling agent / demo video)
     technologies: [
       "Python",
       "OpenAI Whisper",
@@ -749,11 +809,68 @@ const projects = {
       "AIPRESENTATIONSKILLNANALYZER/Capture5.JPG",
       "AIPRESENTATIONSKILLNANALYZER/Capture6.JPG"
     ]
-  }
+  } ,
+   product6: {
+  title: "AI Calling Agent",
+  description: "An AI-powered calling agent that automates customer conversations, lead qualification, and follow-ups through intelligent voice interactions.",
+  category: "AI Automation",
+  client: "Business & Customer Support",
+  date: "2026",
+  duration: "Personal Project",
+  linesOfCode: "—",
+  liveUrl: "#",
+  videoUrl: "https://youtu.be/x5QUFJgfu2Y?si=Bu_O49QlNC9iFd3p", // Add your YouTube demo link here
+
+  technologies: [
+    "Python",
+    "n8n",
+    "Gemini API",
+    "Vapi",
+    "PHP",
+    "MySQL",
+    "REST APIs",
+    "Docker"
+  ],
+
+  features: [
+    "AI-powered voice conversations",
+    "Automated customer calling",
+    "Lead qualification",
+    "AI-based lead scoring",
+    "Customer data collection",
+    "Automated follow-ups",
+    "CRM integration",
+    "Call workflow automation"
+  ],
+
+  images: [
+    "AiCallingAgent/image0.png",
+    "AiCallingAgent/image1.png",
+    "AiCallingAgent/image2.png"
+  
+  ]
+}
 
 };
 
+// Converts any standard YouTube URL (watch?v=, youtu.be/, shorts/, embed/) into an embeddable URL
+function getYouTubeEmbedUrl(url) {
+  if (!url) return null;
+  let videoId = null;
 
+  const watchMatch = url.match(/[?&]v=([^&#]+)/);
+  const shortMatch = url.match(/youtu\.be\/([^?&#]+)/);
+  const shortsMatch = url.match(/youtube\.com\/shorts\/([^?&#]+)/);
+  const embedMatch = url.match(/youtube\.com\/embed\/([^?&#]+)/);
+
+  if (watchMatch) videoId = watchMatch[1];
+  else if (shortMatch) videoId = shortMatch[1];
+  else if (shortsMatch) videoId = shortsMatch[1];
+  else if (embedMatch) videoId = embedMatch[1];
+
+  if (!videoId) return null;
+  return `https://www.youtube.com/embed/${videoId}`;
+}
 
     const params = new URLSearchParams(window.location.search);
     const projectId = params.get("id");
@@ -780,6 +897,22 @@ const projects = {
             <i class="bi bi-globe"></i> Visit Live Website
           </a>
         `;
+      }
+
+      // Show project video if a videoUrl is provided
+      const videoSection = document.getElementById("portfolio-video");
+      const videoWrapper = document.getElementById("video-wrapper");
+      const embedUrl = getYouTubeEmbedUrl(project.videoUrl);
+      if (embedUrl) {
+        videoWrapper.innerHTML = `
+          <iframe src="${embedUrl}" title="${project.title} - Project Video"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
+        `;
+        videoSection.style.display = "block";
+      } else {
+        videoSection.style.display = "none";
       }
       
       // Set stats
